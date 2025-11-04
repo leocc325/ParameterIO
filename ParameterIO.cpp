@@ -1,4 +1,4 @@
-#include "ParameterIO.hpp"
+﻿#include "ParameterIO.hpp"
 
 #include <QTextStream>
 #include <QDebug>
@@ -94,6 +94,18 @@ int ParameterIO::readXmlFile()
 ParameterIO::ParameterIO()
 {
 
+}
+
+void ParameterIO::deleteXmlNode(const QString &objName)
+{
+    QDomNodeList list = m_Doc.elementsByTagName(objName);
+    for(int i = 0; i < list.count(); i++)
+    {
+        QDomElement element = list.at(i).toElement();
+
+        QDomNode parent = element.parentNode();
+        parent.removeChild(element);
+    }
 }
 
 void ParameterIO::repair()

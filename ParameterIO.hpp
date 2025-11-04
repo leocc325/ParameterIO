@@ -1,4 +1,4 @@
-#ifndef PARAMETERIO_HPP
+﻿#ifndef PARAMETERIO_HPP
 #define PARAMETERIO_HPP
 
 #include "StringConvertorQ.hpp"
@@ -13,8 +13,6 @@
 
 static const QString NodeType  = "Type";
 static const QString AttName = "arg";
-
-using namespace MetaUtility;
 
 class ParameterIOException:public std::exception
 {
@@ -55,6 +53,8 @@ private:
     template<typename...Args> void writeXmlNode(const QString& objName,const Args&...args);
 
     template<typename...Args> void readXmlNode(const QString& objName,Args&...args);
+
+    void deleteXmlNode(const QString& objName);
 
     template<typename firstArg,typename...Args> void writeArgs(QDomElement & node,const firstArg& first, const Args&...args);
 
