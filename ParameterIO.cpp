@@ -100,6 +100,7 @@ void ParameterIO::repair()
 {
     //抛出异常之后文件不会关闭,在这里关闭已打开的文件
     m_TargetFile.close();
+    m_Doc.clear();
 
     //生成一个包含文件头和根节点的空xml对象
     QDomProcessingInstruction xmlInstruction = m_Doc.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"");
